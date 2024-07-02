@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./public/style.css">
+
+
+  <title>Document</title>
+</head>
+<body>
+
+  <div class="contact-form">
+    <h1>Contact Us</h1>
+    <form action="http://127.0.0.1:3000/email" method="post">
+      <input class="email" type="email" name="email" placeholder="Your Email" >
+      <span class="error-message email-error"></span>
+      <input class="subject" type="text" name="subject" placeholder="Subject" >
+      <span class="error-message subject-error"></span>
+      <textarea id="message" maxlength ="1000" name="body" placeholder="Message" rows="5"></textarea>
+      <span id="character-count">(0/1000)</span>
+
+      <span class="error-message body-error"></span>
+      <button type="submit" name="sendEmail">Send Email</button>
+    </form>
+  </div>
+
+  <div class="half-circle-spinner">
+    <div class="circle circle-1"></div>
+    <div class="circle circle-2"></div>
+  </div>
+   
+  
+  
+
+</body>
+<script src="./script.js"></script>
+
+
+</html>
