@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+
+  <title>Csv Read File</title>
+</head>
+<body>
+  <div>
+    <div class="container">
+      <input type="file"  name="file" id="file" accept=".csv" ><br><br>
+      <label for="limit">Limit:</label>
+      <input type="number" id="limit" value="8807" ><br><br>
+      <label for="offset">Offset:</label>
+      <input type="number" id="offset" value="1" ><br><br>
+      <label for="search">Search by title:</label>
+      <input type="text" id="search" ><br><br>
+      <div id="execution-time"></div>
+      <div id="record-count"></div>
+      
+      <button type="button" id="btnsubmit" onclick="readCSVFile()">Submit</button>
+    </div>
+    
+    <br><br>
+    <table id="tblcsvdata" border="1" style="border-collapse: collapse;">
+      <thead>
+        <tr>
+          <th>show_id</th>
+          <th>type</th>
+          <th>title</th>
+          <th>director</th>
+          <th>cast</th>
+          <th>country</th>
+          <th>date_added</th>
+          <th>release_year</th>
+          <th>rating</th>
+          <th>duration</th>
+          <th>listed_in</th>
+          <th>description</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+      </tbody>
+    </table>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

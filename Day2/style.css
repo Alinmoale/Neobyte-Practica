@@ -1,0 +1,57 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+ .container {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+ label {
+  display: block;
+  margin-bottom: 10px;
+} 
+
+input[type="file"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+input[type="number"], input[type="text"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#execution-time {
+  font-size: 16px;
+  font-weight: bold;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+#record-count{
+  margin-bottom: 10px;
+}
+
+#btnsubmit {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#btnsubmit:hover {
+  background-color: #3e8e41;
+} 
