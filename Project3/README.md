@@ -4,7 +4,7 @@
 
 This repository contains two PHP scripts:
 
-### `movies.php`
+### `index.php`
 
 Retrieves data from a MySQL database and outputs it in JSON format.
 
@@ -22,7 +22,7 @@ Retrieves data from a MySQL database and outputs it in JSON format.
 	* `$dbname`: The name of the MySQL database to use
 2. Run the script to retrieve the data from the MySQL database and output it in JSON format.
 
-### `upload.php`
+### `uploadcsv.php`
 
 Uploads data from a CSV file to a MySQL database.
 
