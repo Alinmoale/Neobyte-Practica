@@ -1,8 +1,7 @@
 <?php
-$host = "127.0.0.1"; // Replace with the IP address of your Docker container
-$username = "root";
-$password = "pass";
-$dbname = "Movies";
+
+require_once 'db_config.php';
+
 
 try {
   $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
@@ -49,9 +48,14 @@ try {
       $listed_in = explode(', ', $row[10]); // Split categories by comma
       $category = trim($listed_in[0]); // Get the first category
 
-      if (!in_array($category, $categories)) { // Check if category is not already inserted
-          $categories[] = $category; // Add category to the array
+      // Check if category already exists in the database
+      $sql = "SELECT id FROM categories WHERE name = :name";
+      $stmt = $conn->prepare($sql);
+      $stmt->bindParam(':name', $category);
+      $stmt->execute();
+      $category_id = $stmt->fetchColumn();
 
+      if (!$category_id) { // Category doesn't exist, insert it
           $sql = "INSERT INTO categories (name) VALUES (:name)";
           $stmt = $conn->prepare($sql);
           $stmt->bindParam(':name', $category);
@@ -63,6 +67,8 @@ try {
           } else {
               echo "Failed to insert: $category\n";
           }
+      } else { // Category already exists, use its ID
+          $category_ids[$category] = $category_id;
       }
   }
 
@@ -78,15 +84,26 @@ try {
       $category = trim($listed_in[0]); // Get the first category
       $category_id = $category_ids[$category]; // Get the category ID
 
-      $sql = "INSERT INTO movies (title, category_id) VALUES (:title, :category_id)";
+      // Check if movie already exists in the database
+      $sql = "SELECT 1 FROM movies WHERE title = :title";
       $stmt = $conn->prepare($sql);
       $stmt->bindParam(':title', $title);
-      $stmt->bindParam(':category_id', $category_id);
+      $stmt->execute();
+      $movie_exists = $stmt->fetchColumn();
 
-      if ($stmt->execute()) {
-          echo "Inserted: $title\n"; // Debug statement
+      if (!$movie_exists) {
+          $sql = "INSERT INTO movies (title, category_id) VALUES (:title, :category_id)";
+          $stmt = $conn->prepare($sql);
+          $stmt->bindParam(':title', $title);
+          $stmt->bindParam(':category_id', $category_id);
+
+          if ($stmt->execute()) {
+              echo "Inserted: $title\n"; // Debug statement
+          } else {
+              echo "Failed to insert: $title\n";
+          }
       } else {
-          echo "Failed to insert: $title\n";
+          echo "Movie already exists: $title\n";
       }
   }
 
@@ -96,6 +113,6 @@ try {
 } catch (PDOException $e) {
   if ($conn) {
       $conn->rollBack(); // Rollback transaction on error
-  }
-  die("Connection failed: ". $e->getMessage());
+      die("Connection failed: ". $e->getMessage());
+    }
 }
