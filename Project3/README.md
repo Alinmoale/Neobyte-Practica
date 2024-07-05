@@ -54,3 +54,20 @@ Update the following configuration variables in both scripts:
 * PHP 7.0 or later
 * MySQL 5.6 or later
 * PDO extension enabled
+* CREATE DATABASE Movies;
+use Movies;
+
+CREATE TABLE categories (
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(255) NULL,
+  PRIMARY KEY (id)
+);
+
+
+CREATE TABLE movies (
+  id INT NOT NULL AUTO_INCREMENT,
+  title VARCHAR(255) NOT NULL,
+  category_id INT NULL,
+  PRIMARY KEY (id),
+  KEY category_id (category_id)
+);
