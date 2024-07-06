@@ -54,8 +54,11 @@ Update the following configuration variables in both scripts:
 * PHP 7.0 or later
 * MySQL 5.6 or later
 * PDO extension enabled
-* CREATE DATABASE Movies;
-use Movies;
+
+
+```sql
+ CREATE DATABASE Movies;
+ use Movies;
 
 CREATE TABLE categories (
   id INT NOT NULL AUTO_INCREMENT,
