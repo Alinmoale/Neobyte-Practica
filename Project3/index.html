@@ -5,13 +5,16 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div id="container">
   <h1>Movies Table</h1>
-  <div id="search-controls">
-    <label for="offset-input">Offset:</label>
-    <input type="number" id="offset-input" value="0">
-    <label for="limit-input">Limit:</label>
-    <input type="number" id="limit-input" value="10">
-    <button id="search-button" onclick="search()">Search</button>
+
+    <div id="search-controls">
+      <label for="offset-input">Offset:</label>
+      <input type="number" id="offset-input" value="0">
+      <label for="limit-input">Limit:</label>
+      <input type="number" id="limit-input" value="10">
+      <button id="search-button" onclick="search()">Search</button>
+    </div>
   </div>
   <div id="table-container">
     <table id="movies-table">

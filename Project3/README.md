@@ -14,7 +14,6 @@ Retrieves data from a MySQL database and outputs it in JSON format.
 * `limit`: The limit of the data to retrieve (default: 10)
 
 
-
 ### `uploadcsv.php`
 
 Uploads data from a CSV file to a MySQL database.
