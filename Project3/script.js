@@ -1,6 +1,7 @@
 function search() {
   const offset = document.getElementById('offset-input').value;
   const limit = document.getElementById('limit-input').value;
+  
   fetch(`index.php?offset=${offset}&limit=${limit}`)
     .then(response => response.json())
     .then(data => {
